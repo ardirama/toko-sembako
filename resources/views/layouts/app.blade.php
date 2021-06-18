@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('embedcss')
 </head>
 <body>
     <div id="app">
@@ -32,9 +33,22 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    @auth
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('home') ? 'd-none' : '' }}" href="{{ route('home') }}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('products') ? 'd-none' : '' }}" href="{{ route('products') }}">Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Riwayat Transaksi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Pinjaman</a>
+                        </li>
                     </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -77,4 +91,5 @@
         </main>
     </div>
 </body>
+    @yield('embedjs')
 </html>
